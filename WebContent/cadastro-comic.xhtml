@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" >
+	
+	<h:head>
+	</h:head>
+	<h:body>
+	
+		<h:form>
+			Coleção
+			<p:selectOneMenu id="collection" value="#{comicBean.comic.collection}"  style="width:125px">
+	           <f:selectItems value="#{comicBean.collections}" var="collections" itemLabel="#{collections.name}" itemValue="#{collections.id}" />
+	        </p:selectOneMenu><br />
+			Título
+			<p:inputText value="#{comicBean.comic.title}" /><br />
+			Número
+			<p:spinner value="#{comicBean.comic.number}" /> <br />
+			Imagem
+			<p:inputText value="#{comicBean.comic.picture}" /><br />
+			Preço
+			<p:spinner value="#{comicBean.comic.price}" stepFactor="0.25" /> <br />
+			Estado
+			<p:inputText value="#{comicBean.comic.state}" /><br />
+			Lido
+			<p:selectBooleanCheckbox value="#{comicBean.comic.readed}" /><br />
+			Grau
+			<p:inputText value="#{comicBean.comic.grade}" /><br />
+			<p:commandButton value="Save" action="#{comicBean.inserir}" />
+		</h:form>
+	
+	</h:body>
+</html>

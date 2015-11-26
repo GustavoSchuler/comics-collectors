@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:body>
+	
+		<h:form>
+		
+			<h2>Comics</h2>
+		    <hr />
+
+			<br /><br />
+			<p:dataTable value="#{comicBean.getListaComicsUser()}" var="comic">
+				<p:column> 
+					<f:facet name="header">
+						<h:outputText value="Código" />
+					</f:facet>
+					<h:outputText value="#{comic.id}"/>
+				</p:column> 
+				<p:column> 
+					<f:facet name="header">
+						<h:outputText value="Título" />
+					</f:facet>
+					<h:outputText value="#{comic.title}"/>
+				</p:column> 
+			</p:dataTable>
+		 </h:form>
+	</h:body>
+</html>	

@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" >
+	
+	<h:head>
+	</h:head>
+	<h:body>
+	
+		<h:form>
+			Nome
+			<p:inputText value="#{collectionBean.collection.name}" /><br />
+			Descrição
+			<p:inputText value="#{collectionBean.collection.description}" /> <br />
+			Imagem
+			<p:inputText value="#{collectionBean.collection.picture}" /><br />
+			Edições
+			<p:spinner value="#{collectionBean.collection.editions}" /> <br />
+			Tipo
+			<p:inputText value="#{collectionBean.collection.type}" /><br />
+			Compania
+			<p:inputText value="#{collectionBean.collection.publishingCompany}" /><br />
+			Status
+			<p:selectBooleanCheckbox value="#{collectionBean.collection.status}" /><br />
+			Tipo Acesso
+			<p:selectBooleanCheckbox value="#{collectionBean.collection.accessType}" /><br />
+			<p:commandButton value="Save" action="#{collectionBean.inserir}" />
+		</h:form>
+	
+	</h:body>
+</html>
