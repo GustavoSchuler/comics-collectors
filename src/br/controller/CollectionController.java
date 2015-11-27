@@ -54,6 +54,39 @@ public class CollectionController extends BaseController {
 		executaInsert();
 	}
 	
+	public void edita(){
+		StringBuffer sql = new StringBuffer();
+		
+		sql.append("update collection set");
+		sql.append("name = ?,");
+		sql.append("description = ?,");
+		sql.append("picture = ?,");
+		sql.append("editions = ?,");
+		sql.append("type = ?,");
+		sql.append("publishing_company = ?,");
+		sql.append("status = ?,");
+		sql.append("access_type = ? ");
+		sql.append("where iduser = ?");
+		
+		setSql(sql.toString());
+		
+		Object[] sqlParams = {
+				collection.getName(),
+				collection.getDescription(),
+				collection.getPicture(),
+				collection.getEditions(),
+				collection.getType(),
+				collection.getPublishingCompany(),
+				collection.getStatus(),
+				collection.getAccessType(),
+				2 //collection.getIdUser()
+		};
+		
+		setSqlParams(sqlParams);
+		
+		executaInsert();
+	}
+	
 	public List<Collection> lista(){
 		List<Collection> collections = new ArrayList<Collection>();
 		
@@ -80,7 +113,7 @@ public class CollectionController extends BaseController {
 				return null;
 			}
 		}
-		
+				
 		return collections;
 	}
 

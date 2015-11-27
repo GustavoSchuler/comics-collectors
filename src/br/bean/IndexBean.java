@@ -11,31 +11,23 @@ import br.util.Util;
 @SessionScoped
 public class IndexBean {
 	
-	private void go(String onde){
-		try {
-			Util.sendRedirect(onde);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	public String goComic(){
+		return "lista-comic";
 	}
 	
-	public void goComic(){
-		go("./lista-comic.jsf");
+	public String goCollection() throws IOException{
+		return "lista-collection";
 	}
 	
-	public void goCollection(){
-		go("./lista-collection.jsf");
+	public String goCompany(){
+		return "lista-company";
 	}
 	
-	public void goCompany(){
-		go("./lista-company.jsf");
-	}
-	
-	public void goType(){
-		go("./lista-type.jsf");
+	public String goType(){
+		return "lista-type";
 	}	
 	
-	public void goUser(){
-		go("./lista-user.jsf");
+	public String goUser(){
+		return "lista-user";
 	}
 }

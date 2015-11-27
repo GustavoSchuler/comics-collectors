@@ -12,9 +12,7 @@ public class Util {
 	
 	public static HttpSession getSession() {
 		
-		ExternalContext context = FacesContext.
-				                    getCurrentInstance().
-				                    getExternalContext();
+		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
 		
 		HttpServletRequest request = (HttpServletRequest) context.getRequest();
 		HttpSession session = request.getSession();
@@ -24,9 +22,7 @@ public class Util {
 	
 	public static void sendRedirect( String praOnde ) throws IOException {
 		
-		ExternalContext context = FacesContext.
-                getCurrentInstance().
-                getExternalContext();
+		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
 		
 		HttpServletResponse response = (HttpServletResponse) context.getResponse();
 		response.sendRedirect( praOnde );
