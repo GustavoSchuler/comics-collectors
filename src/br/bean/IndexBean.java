@@ -1,11 +1,8 @@
 package br.bean;
 
-import java.io.IOException;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import br.util.Util;
 
 @ManagedBean
 @SessionScoped

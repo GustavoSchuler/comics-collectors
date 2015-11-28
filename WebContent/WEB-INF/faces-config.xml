@@ -42,7 +42,6 @@
     </navigation-rule>
     
     <navigation-rule>
-        <from-view-id>/lista-comic.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>lista-comic</from-outcome>
             <to-view-id>/lista-comic.jsf</to-view-id>
@@ -51,7 +50,6 @@
     </navigation-rule>
     
     <navigation-rule>
-        <from-view-id>/lista-collection.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>lista-collection</from-outcome>
             <to-view-id>/lista-collection.jsf</to-view-id>
@@ -60,7 +58,6 @@
     </navigation-rule>
     
     <navigation-rule>
-        <from-view-id>/cadastro-collection.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>cadastro-collection</from-outcome>
             <to-view-id>/cadastro-collection.jsf</to-view-id>
@@ -69,7 +66,6 @@
     </navigation-rule>
     
     <navigation-rule>
-        <from-view-id>/lista-company.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>lista-company</from-outcome>
             <to-view-id>/lista-company.jsf</to-view-id>
@@ -78,7 +74,6 @@
     </navigation-rule>
     
     <navigation-rule>
-        <from-view-id>/lista-type.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>lista-type</from-outcome>
             <to-view-id>/lista-type.jsf</to-view-id>
@@ -87,7 +82,6 @@
     </navigation-rule>
     
     <navigation-rule>
-        <from-view-id>/lista-user.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>lista-user</from-outcome>
             <to-view-id>/lista-user.jsf</to-view-id>

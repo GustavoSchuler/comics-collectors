@@ -5,17 +5,11 @@
 	xmlns:p="http://primefaces.org/ui">
 	
 	<h:body>
-	
+		
 		<h:form>
 		
-			<h2>Comics</h2>
+			<h2>Collections</h2>
 		    <hr />
-
-			<br /><br />
-			<h:form>
-				<p:commandLink action="#{collectionBean.goNewCollection}" value="Nova Coleção" /> <br />
-			</h:form>
-			<br /><br />
 			
 			<p:dataTable value="#{collectionBean.getListaCollectionUser()}" var="collection">
 				<p:column> 
@@ -31,6 +25,11 @@
 					<h:outputText value="#{collection.name}"/>
 				</p:column> 
 			</p:dataTable>
+		 </h:form>
+		 <h:form>
+		 	<br /><br />
+			<p:commandButton value="Nova Coleção" action="#{collectionBean.goNewCollection}" />
+			<br /><br />
 		 </h:form>
 	</h:body>
 </html>	
