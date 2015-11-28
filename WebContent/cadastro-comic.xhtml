@@ -2,7 +2,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui" >
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:mc="http://java.sun.com/jsf/composite/componentes" >
 	
 	<h:head>
 		<h:outputScript library="js" name="jquery.js" />
@@ -27,6 +28,7 @@
 			Preço
 			<p:spinner value="#{comicBean.comic.price}" stepFactor="0.25" /> <br />
 			Estado
+			<mc:state value="#{comicBean.coomic.state}" />
 			<p:selectOneMenu id="state" value="#{comicBean.comic.state}"  style="width:125px">
 	           <f:selectItems value="#{comicBean.states}" var="states" itemLabel="#{states.name}" itemValue="#{states.id}" />
 	        </p:selectOneMenu><br />
