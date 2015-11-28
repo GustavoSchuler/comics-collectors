@@ -26,7 +26,7 @@ public class UserLogadoRenderer extends Renderer {
 		writer.writeAttribute( "class", "alert alert-danger", null );
 
 		writer.write( "<h2>" );
-		writer.write( "Bam-vindo " + ((User) Util.getSession().getAttribute( "user" )).getName() );
+		writer.write( "Bem-vindo " + ((User) Util.getSession().getAttribute( "user" )).getName() );
 		writer.write( "</h2>");
 		writer.endElement( "div" );	
 	}	

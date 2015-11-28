@@ -12,6 +12,11 @@
 		    <hr />
 
 			<br /><br />
+			<h:form>
+				<p:commandLink action="#{collectionBean.goNewCollection}" value="Nova Coleção" /> <br />
+			</h:form>
+			<br /><br />
+			
 			<p:dataTable value="#{collectionBean.getListaCollectionUser()}" var="collection">
 				<p:column> 
 					<f:facet name="header">

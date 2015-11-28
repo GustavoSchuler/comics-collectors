@@ -15,7 +15,7 @@ public class IndexBean {
 		return "lista-comic";
 	}
 	
-	public String goCollection() throws IOException{
+	public String goCollection(){
 		return "lista-collection";
 	}
 	

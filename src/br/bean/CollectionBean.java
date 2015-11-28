@@ -37,5 +37,9 @@ public class CollectionBean {
 		
 		return listaCollection;
 	}
-
+	
+	public String goNewCollection(){
+		return "cadastro-collection";
+	}
+	
 }

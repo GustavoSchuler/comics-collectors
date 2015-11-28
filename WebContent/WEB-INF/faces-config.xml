@@ -60,6 +60,15 @@
     </navigation-rule>
     
     <navigation-rule>
+        <from-view-id>/cadastro-collection.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>cadastro-collection</from-outcome>
+            <to-view-id>/cadastro-collection.jsf</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
         <from-view-id>/lista-company.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>lista-company</from-outcome>
