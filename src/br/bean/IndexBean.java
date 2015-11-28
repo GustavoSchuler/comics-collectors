@@ -8,6 +8,10 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class IndexBean {
 	
+	public String goIndex(){
+		return "success";
+	}
+	
 	public String goComic(){
 		return "lista-comic";
 	}

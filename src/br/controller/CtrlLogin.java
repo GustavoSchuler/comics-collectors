@@ -30,7 +30,7 @@ public class CtrlLogin {
 	
 	public void executaAcaoBotao() throws IOException {
 		System.out.println( "executaAcaoBotao" );
-		//Util.sendRedirect( "./index.jsf" );
+		Util.sendRedirect( "./index.jsf" );
 	}
 	
 	public String executaAcaoLink1() {

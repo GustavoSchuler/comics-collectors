@@ -6,27 +6,38 @@
 	xmlns:ff="http://fevasdb.com.br">
 	
 	<h:head>
-		<h:outputStylesheet library="css" name="bootstrap.min.css" />
 	</h:head>
 	<h:body>
-		
-		<ff:userLogado texto="Oi oi"/>
+		<p:growl id="messages" showDetail="false"/>
 		
 		<h:form>
-			<h:commandLink action="#{ctrlLogin.logout}">Logout</h:commandLink><br />
-			<h2>Menu</h2>
-			<hr />
-			<p:commandLink action="#{indexBean.goComic}" value="Comics" /> <br />
-			<p:commandLink action="#{indexBean.goCollection}" value="Coleções"/> <br />
-			<p:commandLink action="#{indexBean.goCompany}" value="Editoras" /> <br />
-			<p:commandLink action="#{indexBean.goType}" value="Tipos" /> <br />
-			<p:commandLink action="#{indexBean.goUser}" value="Usuários" /> <br />
-		    <!-- 
-		    h:outputText id="saudacao" value="#{controleMensagens.mensagemDoDias}" style="color: red;" />
-		    -->
-		     
+			<p:menubar>
+				<p:menuitem>
+					<h:link outcome="/index.xhmtl">
+				        <h:graphicImage url="http://upload.wikimedia.org/wikipedia/commons/8/81/Wikimedia-logo.svg" height="50" />
+				    </h:link>
+				</p:menuitem>
+				<p:menuitem>
+					<h:link outcome="/index.xhmtl" styleClass="">
+				        <ff:userLogado texto="Oi oi"/>
+				    </h:link>
+				</p:menuitem>
+			</p:menubar>
+			<p:menu>
+		       <p:submenu label="MENU">
+		       	   <p:menuitem value="Home" action="#{indexBean.goIndex}" update="messages" />
+		           <p:menuitem value="Coleções" action="#{indexBean.goCollection}" update="messages" />
+		           <p:menuitem value="Quadrinhos" action="#{indexBean.goComic}" update="messages"/>
+		           <p:menuitem value="Editoras" action="#{indexBean.goCompany}" update="messages"/>
+		       </p:submenu>
+		       <p:submenu label="CONFIGURAÇÃO">
+		           <p:menuitem value="Cadastro" action="#{indexBean.goUser}" update="messages" icon="ui-icon-person"/>
+		           <p:menuitem value="Logout" action="#{ctrlLogin.logout}" update="messages" icon="ui-icon-power"/>
+		       </p:submenu>
+	        </p:menu>  
 		 </h:form>
-	
-		<h:outputScript library="js" name="bootstrap.min.js" />
+		 
+		 
+		 
 	</h:body>
 </html>	

@@ -1,17 +1,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 	
+	<h:head>
+		<h:outputScript library="js" name="jquery.js" />
+	</h:head>
+	
 	<h:body>
+	
+		<h:form id="form">
 		
-		<h:form>
-		
-			<h2>Collections</h2>
+			<h2>Coleções</h2>
 		    <hr />
-			
-			<p:dataTable value="#{collectionBean.getListaCollectionUser()}" var="collection">
+
+			<br /><br />
+			<p:dataTable value="#{collectionBean.getListaCollectionUser()}" var="collection" id="collectionsGrid">
 				<p:column> 
 					<f:facet name="header">
 						<h:outputText value="Código" />
@@ -23,13 +27,37 @@
 						<h:outputText value="Nome" />
 					</f:facet>
 					<h:outputText value="#{collection.name}"/>
-				</p:column> 
+				</p:column>
+				<p:column> 
+					<f:facet name="header">
+						<h:outputText value="Descrição" />
+					</f:facet>
+					<h:outputText value="#{collection.description}"/>
+				</p:column>
+				<p:column> 
+					<f:facet name="header">
+						<h:outputText value="Imagem" />
+					</f:facet>
+					<h:outputText value="#{collection.picture}"/>
+				</p:column>
+				<p:column> 
+					<f:facet name="header">
+						<h:outputText value="Edições" />
+					</f:facet>
+					<h:outputText value="#{collection.editions}"/>
+				</p:column>
+				<p:column>
+					<p:commandButton value="Editar" type="button"  />
+				</p:column>
+				<p:column>
+					<p:commandButton value="X" action="#{collectionBean.deletar(collection)}">
+						<f:ajax execute="@form" update="@form :collectionsGrid"/>
+					</p:commandButton>
+				</p:column>
 			</p:dataTable>
 		 </h:form>
-		 <h:form>
-		 	<br /><br />
-			<p:commandButton value="Nova Coleção" action="#{collectionBean.goNewCollection}" />
-			<br /><br />
-		 </h:form>
+		 
+		 <br /><br />
+		 <p:commandButton value="Nova Coleção" action="#{collectionBean.goNewCollection}" />
 	</h:body>
 </html>	

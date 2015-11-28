@@ -4,6 +4,10 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 	
+	<h:head>
+		<h:outputScript library="js" name="jquery.js" />
+	</h:head>
+	
 	<h:body>
 	
 		<h:form>
@@ -12,7 +16,8 @@
 		    <hr />
 
 			<br /><br />
-			<p:dataTable value="#{comicBean.getListaComicsUser()}" var="comic">
+			<h:commandButton value="Novo" action="#{comicBean.goCadastroComic(null)}" /><br />
+			<p:dataTable value="#{comicBean.getListaComicsUser()}" var="comic" id="comicsGrid">
 				<p:column> 
 					<f:facet name="header">
 						<h:outputText value="Código" />
@@ -21,10 +26,42 @@
 				</p:column> 
 				<p:column> 
 					<f:facet name="header">
+						<h:outputText value="Coleção" />
+					</f:facet>
+					<h:outputText value="#{comic.collection}"/>
+				</p:column> 
+				<p:column> 
+					<f:facet name="header">
 						<h:outputText value="Título" />
 					</f:facet>
 					<h:outputText value="#{comic.title}"/>
 				</p:column> 
+				<p:column> 
+					<f:facet name="header">
+						<h:outputText value="Número" />
+					</f:facet>
+					<h:outputText value="#{comic.number}"/>
+				</p:column> 
+				<p:column> 
+					<f:facet name="header">
+						<h:outputText value="Foto" />
+					</f:facet>
+					<h:outputText value="#{comic.picture}"/>
+				</p:column>
+				<p:column> 
+					<f:facet name="header">
+						<h:outputText value="Preço" />
+					</f:facet>
+					<h:outputText value="#{comic.price}"/>
+				</p:column>  
+				<p:column>
+					<h:commandButton value="Editar" action="#{comicBean.goCadastroComic(comic)}"  />
+				</p:column>
+				<p:column>
+					<h:commandButton value="X" action="#{comicBean.deletar(comic)}">
+						<f:ajax execute="@form" update="@form :comicsGrid"/>
+					</h:commandButton>
+				</p:column>
 			</p:dataTable>
 		 </h:form>
 	</h:body>

@@ -1,5 +1,6 @@
 package br.bean;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -7,8 +8,11 @@ import javax.faces.bean.ViewScoped;
 
 import br.controller.CollectionController;
 import br.controller.ComicController;
+import br.controller.StateController;
 import br.model.Collection;
 import br.model.Comic;
+import br.model.State;
+import br.util.Util;
 
 @ManagedBean
 @ViewScoped
@@ -16,12 +20,25 @@ public class ComicBean {
 	
 	private Comic comic;
 	private List<Collection> collections;
+	private List<State> states;
 	
 	public ComicBean(){
-		this.comic = new Comic(0,0,"",0,"",0.0,0,null,0);
 		
 		CollectionController collectionController = new CollectionController();
 		this.collections = collectionController.lista();
+		
+		StateController stateController = new StateController();
+		this.states = stateController.listar();
+		
+		if(Util.getSession().getAttribute("comic") != null){
+			
+			this.comic = ( (Comic)Util.getSession().getAttribute("comic") );
+			
+		}else{
+		
+			this.comic = new Comic(0,0,"",0,"",0.0,0,null,0);
+			
+		}
 	}
 
 	public Comic getComic() {
@@ -32,14 +49,16 @@ public class ComicBean {
 		this.comic = comic;
 	}
 	
-	public void inserir(){
-		ComicController ctrl = new ComicController(comic);
-		ctrl.insere();
-		System.out.println("Inseriu");
-	}
-	
 	public void salvar(){
+		ComicController ctrl = new ComicController(comic);
 		
+		if(comic.getId() == 0){
+			ctrl.insere();
+		}else{
+			ctrl.atualiza();
+		}
+		
+		goListaComic();
 	}
 
 	public List<Collection> getCollections() {
@@ -56,4 +75,36 @@ public class ComicBean {
 		
 		return listaComic;
 	}
+
+	public List<State> getStates() {
+		return states;
+	}
+
+	public void setStates(List<State> states) {
+		this.states = states;
+	}
+	
+	public void goCadastroComic(Comic comic){
+		//Caso venha algum comic por parâmetro, adiciona na sessão. Isso indica que é uma edição.
+		if(comic != null){
+			Util.getSession().setAttribute("comic", comic);
+		}
+		
+		try {
+			Util.sendRedirect("cadastro-comic.jsf");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void goListaComic(){
+		Util.getSession().setAttribute("comic", null);
+		
+		try {
+			Util.sendRedirect("lista-comic.jsf");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

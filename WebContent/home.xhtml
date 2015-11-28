@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ff="http://fevasdb.com.br">
+	
+	<h:head>
+		<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	</h:head>
+	<h:body>
+		
+		<h2>Todas Coleções</h2>
+		<h:form>
+			<h:commandLink value="Login" action="#{homeBean.goLogin()}" />
+			<p:dataTable value="#{homeBean.todasColecoes}" var="collections" id="collections">
+				<p:column> 
+					<f:facet name="header">
+						<h:outputText value="Código" />
+					</f:facet>
+					<h:outputText value="#{collections.id}"/>
+				</p:column> 
+				<p:column> 
+					<f:facet name="header">
+						<h:outputText value="Nome" />
+					</f:facet>
+					<h:outputText value="#{collections.name}"/>
+				</p:column>
+				<p:column> 
+					<f:facet name="header">
+						<h:outputText value="Descrição" />
+					</f:facet>
+					<h:outputText value="#{collections.description}"/>
+				</p:column>
+				<p:column> 
+					<f:facet name="header">
+						<h:outputText value="Imagem" />
+					</f:facet>
+					<h:outputText value="#{collections.picture}"/>
+				</p:column>
+				<p:column> 
+					<f:facet name="header">
+						<h:outputText value="Edições" />
+					</f:facet>
+					<h:outputText value="#{collections.editions}"/>
+				</p:column>
+				
+			</p:dataTable>
+		     
+		 </h:form>
+	
+	</h:body>
+</html>	

@@ -35,6 +35,35 @@ public class BaseController {
 		}
 	}
 	
+	protected boolean executaUpdate(){
+		try {
+			preparedStatement = conexao.prepareStatement(sql);
+			
+			for(int i=0; i<=sqlParams.length-1; i++){
+				preparedStatement.setObject(i+1, sqlParams[i]);
+			}
+			
+			return preparedStatement.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	protected void executaDelete() {
+		try {
+			preparedStatement = conexao.prepareStatement(sql);
+			
+			for(int i=0; i<=sqlParams.length-1; i++){
+				preparedStatement.setObject(i+1, sqlParams[i]);
+			}
+			
+			preparedStatement.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public ResultSet list(){
 		
 		try {
@@ -78,7 +107,5 @@ public class BaseController {
 	public void setSqlParams(Object[] sqlParams) {
 		this.sqlParams = sqlParams;
 	}
-	
-	
 
 }

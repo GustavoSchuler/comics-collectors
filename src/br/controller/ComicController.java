@@ -51,6 +51,39 @@ public class ComicController extends BaseController {
 		executaInsert();
 	}
 	
+	public void atualiza(){
+		StringBuffer sql = new StringBuffer();
+		
+		sql.append("update comic ");
+		sql.append("   set collection = ?,");
+		sql.append("       title = ?,");
+		sql.append("       number = ?,");
+		sql.append("       picture = ?,");
+		sql.append("       price = ?,");
+		sql.append("       state = ?,");
+		sql.append("       readed = ?,");
+		sql.append("       grade = ?");
+		sql.append(" where id = ?) ");
+		
+		setSql(sql.toString());
+		
+		Object[] sqlParams = {
+				comic.getCollection(),
+				comic.getTitle(),
+				comic.getNumber(),
+				comic.getPicture(),
+				comic.getPrice(),
+				comic.getState(),
+				comic.getReaded(),
+				comic.getGrade(),
+				comic.getId()
+		};
+		
+		setSqlParams(sqlParams);
+		
+		executaUpdate();
+	}
+	
 	public List<Comic> lista(){
 		List<Comic> list = new ArrayList<Comic>();
 		

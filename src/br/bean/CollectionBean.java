@@ -1,15 +1,19 @@
 package br.bean;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
+
+import org.primefaces.context.RequestContext;
 
 import br.controller.CollectionController;
 import br.model.Collection;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class CollectionBean {
 	
 	private Collection collection;
@@ -38,8 +42,13 @@ public class CollectionBean {
 		return listaCollection;
 	}
 	
+	public void deletar(Collection collection){
+		CollectionController ctrl = new CollectionController(collection);
+		ctrl.deleta();
+	}
+
 	public String goNewCollection(){
 		return "cadastro-collection";
 	}
-	
+
 }

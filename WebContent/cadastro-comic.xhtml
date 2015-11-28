@@ -5,10 +5,15 @@
 	xmlns:p="http://primefaces.org/ui" >
 	
 	<h:head>
+		<h:outputScript library="js" name="jquery.js" />
 	</h:head>
 	<h:body>
 	
+		<h2>Comic</h2>
+		<hr />
+	
 		<h:form>
+			
 			Coleção
 			<p:selectOneMenu id="collection" value="#{comicBean.comic.collection}"  style="width:125px">
 	           <f:selectItems value="#{comicBean.collections}" var="collections" itemLabel="#{collections.name}" itemValue="#{collections.id}" />
@@ -22,12 +27,14 @@
 			Preço
 			<p:spinner value="#{comicBean.comic.price}" stepFactor="0.25" /> <br />
 			Estado
-			<p:inputText value="#{comicBean.comic.state}" /><br />
+			<p:selectOneMenu id="state" value="#{comicBean.comic.state}"  style="width:125px">
+	           <f:selectItems value="#{comicBean.states}" var="states" itemLabel="#{states.name}" itemValue="#{states.id}" />
+	        </p:selectOneMenu><br />
 			Lido
 			<p:selectBooleanCheckbox value="#{comicBean.comic.readed}" /><br />
 			Grau
 			<p:inputText value="#{comicBean.comic.grade}" /><br />
-			<p:commandButton value="Save" action="#{comicBean.inserir}" />
+			<p:commandButton value="Save" action="#{comicBean.salvar}" />
 		</h:form>
 	
 	</h:body>
