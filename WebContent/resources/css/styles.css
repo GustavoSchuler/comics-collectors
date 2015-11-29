@@ -18,12 +18,17 @@
 .top {
 	background-color: #205081;
 	height: 50px;
-	padding-top: 0;
-	margin-top: 0;
+	padding-top: 0px;
+	margin-top: 0px;
 }
 
 .userLogado {
 	color: #ffffff;
 	font-family: Comic Sans;
 	font-size: 10px;
+}
+
+.page-title {
+	font-family: Action Comics;
+	padding: 20px 40px;
 }

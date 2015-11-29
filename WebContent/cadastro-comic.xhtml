@@ -28,7 +28,7 @@
 			Preço
 			<p:spinner value="#{comicBean.comic.price}" stepFactor="0.25" /> <br />
 			Estado
-			<mc:state value="#{comicBean.coomic.state}" />
+			<mc:state value="#{comicBean.comic.state}" />
 			<p:selectOneMenu id="state" value="#{comicBean.comic.state}"  style="width:125px">
 	           <f:selectItems value="#{comicBean.states}" var="states" itemLabel="#{states.name}" itemValue="#{states.id}" />
 	        </p:selectOneMenu><br />

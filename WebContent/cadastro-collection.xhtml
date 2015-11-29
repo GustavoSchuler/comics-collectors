@@ -5,28 +5,47 @@
 	xmlns:p="http://primefaces.org/ui" >
 	
 	<h:head>
+		<h:outputStylesheet library="css" name="bootstrap.min.css"  /> 
+		<h:outputStylesheet library="css" name="styles.css"  /> 
 	</h:head>
 	<h:body>
-	
-		<h:form>
-			Nome
-			<p:inputText value="#{collectionBean.collection.name}" /><br />
-			Descrição
-			<p:inputText value="#{collectionBean.collection.description}" /> <br />
-			Imagem
-			<p:inputText value="#{collectionBean.collection.picture}" /><br />
-			Edições
-			<p:spinner value="#{collectionBean.collection.editions}" /> <br />
-			Tipo
-			<p:inputText value="#{collectionBean.collection.type}" /><br />
-			Compania
-			<p:inputText value="#{collectionBean.collection.publishingCompany}" /><br />
-			Status
-			<p:selectBooleanCheckbox value="#{collectionBean.collection.status}" /><br />
-			Tipo Acesso
-			<p:selectBooleanCheckbox value="#{collectionBean.collection.accessType}" /><br />
-			<p:commandButton value="Save" action="#{collectionBean.inserir}" />
-		</h:form>
-	
+		
+		<div class="col-sm-4 col-md-4 col-lg-4">
+			<p class="page-title">COLLECTION</p>
+		</div>
+		
+		<div class="col-sm-4 col-md-4 col-lg-4">
+			
+			<div class="row">
+			
+				<h:form styleClass="form-group">	
+					Nome
+					<p:inputText value="#{collectionBean.collection.name}" styleClass="form-control" /><br />
+					Descrição
+					<p:inputText value="#{collectionBean.collection.description}" styleClass="form-control" /> <br />
+					Imagem
+					<p:fileUpload value="#{collectionBean.collection.picture}" mode="simple" skinSimple="false" /><br />
+					Edições
+					<p:spinner value="#{collectionBean.collection.editions}" min="1" styleClass="form-control" /> <br /><br />
+					Tipo<br />
+					<p:selectOneMenu value="#{collectionBean.collection.type}">
+						<f:selectItem itemLabel="Teste" itemValue="teste"/>
+        			</p:selectOneMenu><br /><br />
+					Editora<br />
+					<p:selectOneMenu value="#{collectionBean.collection.publishingCompany}" >
+						<f:selectItem itemLabel="Teste" itemValue="teste"/>
+        			</p:selectOneMenu><br /><br />
+					Status
+					<p:selectBooleanButton  value="#{collectionBean.collection.status}" onLabel="Ativo" offLabel="Inativo" styleClass="form-control" /><br /><br />
+					Tipo Acesso
+					<p:selectBooleanButton  value="#{collectionBean.collection.accessType}" onLabel="Privado" offLabel="Público" styleClass="form-control" /><br /><br />
+					
+					<p:commandButton value="Salvar" action="#{collectionBean.inserir}" styleClass="form-control btn btn-primary" />
+				</h:form>
+				
+			</div>
+			
+		</div>
+		<h:outputScript library="js" name="bootstrap.min.js" />
 	</h:body>
 </html>
