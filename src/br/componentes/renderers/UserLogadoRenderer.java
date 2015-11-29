@@ -23,7 +23,7 @@ public class UserLogadoRenderer extends Renderer {
 				
 		writer.write( "<!-- Usuário logado nessa bagaça -->" );
 		writer.startElement( "div", component );
-		writer.writeAttribute( "class", "alert alert-danger", null );
+		writer.writeAttribute( "class", "userLogado text-right", null );
 
 		writer.write( "<h2>" );
 		writer.write( "Bem-vindo " + ((User) Util.getSession().getAttribute( "user" )).getName() );

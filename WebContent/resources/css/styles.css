@@ -1,3 +1,29 @@
-.centered {
-    margin: 0 auto;
+@font-face{
+	font-family: "Action Comics";
+	src: url("#{resource['fonts:Action Comics.ttf']}");
+}
+
+.login-body {
+	background-image: url("#{resource['images/background.jpg']}");
+}
+
+.login-title {
+	font-family: Action Comics;
+}
+
+.title {
+	padding: 80px 0;
+}
+
+.top {
+	background-color: #205081;
+	height: 50px;
+	padding-top: 0;
+	margin-top: 0;
+}
+
+.userLogado {
+	color: #ffffff;
+	font-family: Comic Sans;
+	font-size: 10px;
 }
