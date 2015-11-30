@@ -3,7 +3,7 @@
 	src: url("#{resource['fonts:Action Comics.ttf']}");
 }
 
-.login-body {
+.background-pic {
 	background-image: url("#{resource['images/background.jpg']}");
 }
 
@@ -23,12 +23,42 @@
 }
 
 .userLogado {
+	text-transform: uppercase;
+	font-family: Action Comics;
+	font-size: 14px;
 	color: #ffffff;
-	font-family: Comic Sans;
-	font-size: 10px;
+	margin-top: 40px;
+	margin-right: 20px;
 }
 
 .page-title {
 	font-family: Action Comics;
-	padding: 20px 40px;
+	padding: 20px 0px;
+	color: #ffffff;
+	font-size: 24px;
+}
+
+.page-title-top {
+	padding-left: 20px;	
+}
+
+.blue {
+	background: #286090;
+}
+
+.left{
+	height: 100%;
+}
+
+.bottom {
+	position: absolute;
+	bottom: 0;
+}
+
+.content {
+	padding-top: 20px;
+}
+	
+.ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td {
+    border-style: none;
 }
