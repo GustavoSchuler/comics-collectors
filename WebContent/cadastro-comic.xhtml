@@ -6,38 +6,54 @@
 	xmlns:mc="http://java.sun.com/jsf/composite/componentes" >
 	
 	<h:head>
+		<h:outputStylesheet library="css" name="bootstrap.min.css"  /> 
+		<h:outputStylesheet library="css" name="styles.css"  /> 
 		<h:outputScript library="js" name="jquery.js" />
 	</h:head>
 	<h:body>
 	
-		<h2>Comic</h2>
-		<hr />
+		<div class="col-sm-4 col-md-4 col-lg-4 left blue">
+			<p class="page-title">COMIC</p>
+			<h:form styleClass="form-group bottom">
+				<p:commandButton value="Voltar" action="#{indexBean.goCollection}" styleClass="form-control btn btn-default" />
+			</h:form>
+		</div>
 	
-		<h:form>
+		<div class="col-sm-4 col-sm-offset-2 col-md-4 col-md-offset-2 col-lg-4 col-lg-offset-2">
 			
-			Coleção
-			<p:selectOneMenu id="collection" value="#{comicBean.comic.collection}"  style="width:125px">
-	           <f:selectItems value="#{comicBean.collections}" var="collections" itemLabel="#{collections.name}" itemValue="#{collections.id}" />
-	        </p:selectOneMenu><br />
-			Título
-			<p:inputText value="#{comicBean.comic.title}" /><br />
-			Número
-			<p:spinner value="#{comicBean.comic.number}" /> <br />
-			Imagem
-			<p:inputText value="#{comicBean.comic.picture}" /><br />
-			Preço
-			<p:spinner value="#{comicBean.comic.price}" stepFactor="0.25" /> <br />
-			Estado
-			<mc:state value="#{comicBean.comic.state}" />
-			<p:selectOneMenu id="state" value="#{comicBean.comic.state}"  style="width:125px">
-	           <f:selectItems value="#{comicBean.states}" var="states" itemLabel="#{states.name}" itemValue="#{states.id}" />
-	        </p:selectOneMenu><br />
-			Lido
-			<p:selectBooleanCheckbox value="#{comicBean.comic.readed}" /><br />
-			Grau
-			<p:inputText value="#{comicBean.comic.grade}" /><br />
-			<p:commandButton value="Save" action="#{comicBean.salvar}" />
-		</h:form>
-	
+			<div class="row content">
+			
+				<h:form styleClass="form-group">
+			
+					Coleção<br />
+					<p:selectOneMenu id="collection" value="#{comicBean.comic.collection}"   styleClass="form-control">
+			           <f:selectItems value="#{comicBean.collections}" var="collections" itemLabel="#{collections.name}" itemValue="#{collections.id}" />
+			        </p:selectOneMenu><br /><br />
+					Título
+					<p:inputText value="#{comicBean.comic.title}" styleClass="form-control" /><br />
+					Número
+					<p:spinner value="#{comicBean.comic.number}" styleClass="form-control" /> <br /> <br />
+					Imagem
+					<p:inputText value="#{comicBean.comic.picture}" styleClass="form-control" /><br />
+					Preço
+					<p:spinner value="#{comicBean.comic.price}" styleClass="form-control" stepFactor="0.25" /> <br /><br />
+					Estado<br />
+					<p:selectOneMenu id="state" value="#{comicBean.comic.state}"   styleClass="form-control">
+			           <f:selectItems value="#{comicBean.states}" var="states" itemLabel="#{states.name}" itemValue="#{states.id}" />
+			        </p:selectOneMenu>
+					Lido
+					<p:selectBooleanCheckbox value="#{comicBean.comic.readed}" /><br /><br />
+					Grau
+					<p:inputText value="#{comicBean.comic.grade}" styleClass="form-control" /><br /><br />
+					
+					<p:commandButton value="Save" action="#{comicBean.salvar}" styleClass="form-control btn btn-primary" />
+					
+				</h:form>
+				
+			</div>
+			
+		</div>
+		
+		<h:outputScript library="js" name="bootstrap.min.js" />
 	</h:body>
 </html>
