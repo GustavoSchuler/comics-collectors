@@ -38,9 +38,12 @@
 					Preço
 					<p:spinner value="#{comicBean.comic.price}" styleClass="form-control" stepFactor="0.25" /> <br /><br />
 					Estado<br />
-					<p:selectOneMenu id="state" value="#{comicBean.comic.state}"   styleClass="form-control">
+					<mc:state value="#{comicBean.comic.state}" styleClass="form-control" /> <br />
+					<!-- Comentado, pois vamos utilizr o componente composite 
+					<p:selectOneMenu id="state" value="#{comicBean.comic.state}"  style="width:125px">
 			           <f:selectItems value="#{comicBean.states}" var="states" itemLabel="#{states.name}" itemValue="#{states.id}" />
-			        </p:selectOneMenu>
+			        </p:selectOneMenu><br />
+			        -->
 					Lido
 					<p:selectBooleanCheckbox value="#{comicBean.comic.readed}" /><br /><br />
 					Grau
