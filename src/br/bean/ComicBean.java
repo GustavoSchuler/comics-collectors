@@ -84,27 +84,19 @@ public class ComicBean {
 		this.states = states;
 	}
 	
-	public void goCadastroComic(Comic comic){
+	public String goCadastroComic(Comic comic){
 		//Caso venha algum comic por parâmetro, adiciona na sessão. Isso indica que é uma edição.
 		if(comic != null){
 			Util.getSession().setAttribute("comic", comic);
 		}
 		
-		try {
-			Util.sendRedirect("cadastro-comic.jsf");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		return "cadastro-comic";
+
 	}
 	
-	public void goListaComic(){
+	public String goListaComic(){
 		Util.getSession().setAttribute("comic", null);
-		
-		try {
-			Util.sendRedirect("lista-comic.jsf");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		return "lista-comic";
 	}
 	
 }

@@ -5,64 +5,102 @@
 	xmlns:p="http://primefaces.org/ui">
 	
 	<h:head>
+		<h:outputStylesheet library="css" name="styles.css"  /> 
+		<h:outputStylesheet library="css" name="bootstrap.min.css"  /> 
 		<h:outputScript library="js" name="jquery.js" />
 	</h:head>
 	
 	<h:body>
-	
-		<h:form>
 		
-			<h2>Comics</h2>
-		    <hr />
-
-			<br /><br />
-			<h:commandButton value="Novo" action="#{comicBean.goCadastroComic(null)}" /><br />
-			<p:dataTable value="#{comicBean.getListaComicsUser()}" var="comic" id="comicsGrid">
-				<p:column> 
-					<f:facet name="header">
-						<h:outputText value="Código" />
-					</f:facet>
-					<h:outputText value="#{comic.id}"/>
-				</p:column> 
-				<p:column> 
-					<f:facet name="header">
-						<h:outputText value="Coleção" />
-					</f:facet>
-					<h:outputText value="#{comic.collection}"/>
-				</p:column> 
-				<p:column> 
-					<f:facet name="header">
-						<h:outputText value="Título" />
-					</f:facet>
-					<h:outputText value="#{comic.title}"/>
-				</p:column> 
-				<p:column> 
-					<f:facet name="header">
-						<h:outputText value="Número" />
-					</f:facet>
-					<h:outputText value="#{comic.number}"/>
-				</p:column> 
-				<p:column> 
-					<f:facet name="header">
-						<h:outputText value="Foto" />
-					</f:facet>
-					<h:outputText value="#{comic.picture}"/>
-				</p:column>
-				<p:column> 
-					<f:facet name="header">
-						<h:outputText value="Preço" />
-					</f:facet>
-					<h:outputText value="#{comic.price}"/>
-				</p:column>  
-				<p:column>
-					<h:commandButton value="Editar" action="#{comicBean.goCadastroComic(comic)}"  />
-				</p:column>
-				<p:column>
-					<h:commandButton value="X" action="#{comicBean.deletar(comic)}">
-						<f:ajax execute="@form" update="@form :comicsGrid"/>
-					</h:commandButton>
-				</p:column>
-			</p:dataTable>
-		 </h:form>
+		<div class="row blue">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<p class="page-title page-title-top">COMICS</p>
+			</div>
+		</div>
+			
+		<div class="content">
+		
+			<p:growl id="messages" showDetail="false"/>
+			
+			<div class="col-sm-2 col-md-2 col-lg-2">
+				<h:form>			
+					<p:menu>
+				       <p:submenu label="MENU">
+				       	   <p:menuitem value="Home" action="#{indexBean.goIndex}" update="messages" />
+				           <p:menuitem value="Coleções" action="#{indexBean.goCollection}" update="messages" />
+				           <p:menuitem value="Quadrinhos" action="#{indexBean.goComic}" update="messages"/>
+				           <p:menuitem value="Editoras" action="#{indexBean.goCompany}" update="messages"/>
+				       </p:submenu>
+				       <p:submenu label="CONFIGURAÇÃO">
+				           <p:menuitem value="Cadastro" action="#{indexBean.goUser}" update="messages" icon="ui-icon-person"/>
+				           <p:menuitem value="Logout" action="#{ctrlLogin.logout}" update="messages" icon="ui-icon-power"/>
+				       </p:submenu>
+			        </p:menu>
+				 </h:form>
+			</div>
+			
+			<div class="col-sm-10 col-md-10 col-lg-10">
+				
+				<p:commandButton value="Novo" action="#{comicBean.goCadastroComic(null)}" styleClass="btn btn-primary" /><br />
+				
+				<div class="content">
+				
+					<h:form id="form">
+			
+						<div class="table-responsive">
+							<p:dataTable value="#{comicBean.getListaComicsUser()}" var="comic" id="comicsGrid" tableStyleClass="table table-striped">
+								<p:column> 
+									<f:facet name="header">
+										<h:outputText value="Código" />
+									</f:facet>
+									<h:outputText value="#{comic.id}"/>
+								</p:column> 
+								<p:column> 
+									<f:facet name="header">
+										<h:outputText value="Coleção" />
+									</f:facet>
+									<h:outputText value="#{comic.collection}"/>
+								</p:column> 
+								<p:column> 
+									<f:facet name="header">
+										<h:outputText value="Título" />
+									</f:facet>
+									<h:outputText value="#{comic.title}"/>
+								</p:column> 
+								<p:column> 
+									<f:facet name="header">
+										<h:outputText value="Número" />
+									</f:facet>
+									<h:outputText value="#{comic.number}"/>
+								</p:column> 
+								<p:column> 
+									<f:facet name="header">
+										<h:outputText value="Foto" />
+									</f:facet>
+									<h:outputText value="#{comic.picture}"/>
+								</p:column>
+								<p:column> 
+									<f:facet name="header">
+										<h:outputText value="Preço" />
+									</f:facet>
+									<h:outputText value="#{comic.price}"/>
+								</p:column>  
+								<p:column>
+									<h:commandButton value="Editar" action="#{comicBean.goCadastroComic(comic)}"  />
+								</p:column>
+								<p:column>
+									<h:commandButton value="X" action="#{comicBean.deletar(comic)}">
+										<f:ajax execute="@form" update="@form :comicsGrid"/>
+									</h:commandButton>
+								</p:column>
+							</p:dataTable>
+						</div>
+			 		</h:form>
+			 		
+			 	</div>
+				 
+			</div>
+			
+		</div>
 	</h:body>
 </html>	
