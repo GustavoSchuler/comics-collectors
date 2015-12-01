@@ -28,7 +28,7 @@ public class PublishingCompanyController extends BaseController {
 		sql.append("logo");
 		sql.append(") values (?,?,?)");
 		
-		setSql(sql.toString());
+		setSql(sql.toString()); 
 		
 		Object[] sqlParams = {
 				publishingCompany.getName(),
