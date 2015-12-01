@@ -29,6 +29,6 @@ public class IndexBean {
 	}	
 	
 	public String goUser(){
-		return "lista-user";
+		return "user-edit";
 	}
 }

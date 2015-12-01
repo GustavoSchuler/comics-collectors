@@ -50,6 +50,14 @@
     
     <navigation-rule>
         <navigation-case>
+            <from-outcome>cadastro-comic</from-outcome>
+            <to-view-id>/cadastro-comic.jsf</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <navigation-case>
             <from-outcome>lista-collection</from-outcome>
             <to-view-id>/lista-collection.jsf</to-view-id>
             <redirect />
@@ -82,8 +90,8 @@
     
     <navigation-rule>
         <navigation-case>
-            <from-outcome>lista-user</from-outcome>
-            <to-view-id>/lista-user.jsf</to-view-id>
+            <from-outcome>user-edit</from-outcome>
+            <to-view-id>/user-edit.jsf</to-view-id>
             <redirect />
         </navigation-case>
     </navigation-rule>
