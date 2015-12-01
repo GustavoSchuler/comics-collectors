@@ -1,25 +1,27 @@
 package br.bean;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import org.primefaces.context.RequestContext;
-
 import br.controller.CollectionController;
+import br.controller.PublishingCompanyController;
 import br.model.Collection;
+import br.model.PublishingCompany;
 
 @ManagedBean
 @ViewScoped
 public class CollectionBean {
 	
 	private Collection collection;
+	private List<PublishingCompany> listaCompany;
 	
 	public CollectionBean(){
 		this.collection = new Collection();
+		
+		PublishingCompanyController ctrl = new PublishingCompanyController();
+		this.listaCompany = ctrl.lista();
 	}
 	
 	public void inserir(){
@@ -49,6 +51,14 @@ public class CollectionBean {
 
 	public String goNewCollection(){
 		return "cadastro-collection";
+	}
+
+	public List<PublishingCompany> getListaCompany() {
+		return listaCompany;
+	}
+
+	public void setListaCompany(List<PublishingCompany> listaCompany) {
+		this.listaCompany = listaCompany;
 	}
 
 }

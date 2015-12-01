@@ -35,9 +35,9 @@
 						<f:selectItem itemLabel="Teste" itemValue="teste"/>
         			</p:selectOneMenu><br /><br />
 					Editora<br />
-					<p:selectOneMenu value="#{collectionBean.collection.publishingCompany}" >
-						<f:selectItem itemLabel="Teste" itemValue="teste"/>
-        			</p:selectOneMenu><br /><br />
+					<p:selectOneMenu id="state" value="#{collectionBean.collection.publishingCompany}"  style="width:125px">
+	           			<f:selectItems value="#{collectionBean.listaCompany}" var="companies" itemLabel="#{companies.name}" itemValue="#{companies.id}" />
+	        		</p:selectOneMenu><br /><br />
 					Status
 					<p:selectBooleanButton  value="#{collectionBean.collection.status}" onLabel="Ativo" offLabel="Inativo" styleClass="form-control" /><br /><br />
 					Tipo Acesso

@@ -1,0 +1,95 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<h:outputStylesheet library="css" name="styles.css"  /> 
+		<h:outputStylesheet library="css" name="bootstrap.min.css"  /> 
+		<h:outputScript library="js" name="jquery.js" />
+	</h:head>
+	
+	<h:body>
+		
+		<div class="row blue">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<p class="page-title page-title-top">PUBLISHING COMPANY</p>
+			</div>
+		</div>
+			
+		<div class="content">
+		
+			<p:growl id="messages" showDetail="false"/>
+			
+			<div class="col-sm-2 col-md-2 col-lg-2">
+				<h:form>			
+					<p:menu>
+				       <p:submenu label="MENU">
+				       	   <p:menuitem value="Home" action="#{indexBean.goIndex}" update="messages" />
+				           <p:menuitem value="Coleções" action="#{indexBean.goCollection}" update="messages" />
+				           <p:menuitem value="Quadrinhos" action="#{indexBean.goComic}" update="messages"/>
+				           <p:menuitem value="Editoras" action="#{indexBean.goCompany}" update="messages"/>
+				       </p:submenu>
+				       <p:submenu label="CONFIGURAÇÃO">
+				           <p:menuitem value="Cadastro" action="#{indexBean.goUser}" update="messages" icon="ui-icon-person"/>
+				           <p:menuitem value="Logout" action="#{ctrlLogin.logout}" update="messages" icon="ui-icon-power"/>
+				       </p:submenu>
+			        </p:menu>
+				 </h:form>
+			</div>
+			
+			<div class="col-sm-10 col-md-10 col-lg-10">
+				
+				<p:commandButton value="Nova Editora" action="#{publishingCompanyBean.goNewCompany()}" styleClass="btn btn-primary"/>
+				
+				<div class="content">
+				
+					<h:form id="form">
+			
+						<div class="table-responsive">
+							<p:dataTable value="#{publishingCompanyBean.getListaPublishingCompany()}" var="company" id="companyGrid" tableStyleClass="table table-striped">
+								<p:column> 
+									<f:facet name="header">
+										<h:outputText value="Código" />
+									</f:facet>
+									<h:outputText value="#{company.id}"/>
+								</p:column> 
+								<p:column> 
+									<f:facet name="header">
+										<h:outputText value="Nome" />
+									</f:facet>
+									<h:outputText value="#{company.name}"/>
+								</p:column>
+								<p:column> 
+									<f:facet name="header">
+										<h:outputText value="Descrição" />
+									</f:facet>
+									<h:outputText value="#{company.description}"/>
+								</p:column>
+								<p:column> 
+									<f:facet name="header">
+										<h:outputText value="Imagem" />
+									</f:facet>
+									<h:outputText value="#{company.logo}"/>
+								</p:column>
+								<p:column>
+									<h:commandButton value="Editar" action="#{publishingCompanyBean.goUpdateCompany(company)}" />
+								</p:column>
+								<p:column>
+									<h:commandButton value="X" action="#{publishingCompanyBean.deletar(company)}">
+										<f:ajax execute="@form" update="@form :companyGrid"/>
+									</h:commandButton>
+								</p:column>
+							</p:dataTable>
+						</div>
+					 </h:form>
+			 	 
+			 	 </div>
+			 	 
+			 </div>
+		 
+		 </div>
+		 
+		 <h:outputScript library="js" name="bootstrap.min.js" />
+	</h:body>
+</html>	
