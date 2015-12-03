@@ -1,6 +1,5 @@
 package br.bean;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;

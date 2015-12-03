@@ -9,6 +9,7 @@ import br.controller.CollectionController;
 import br.controller.PublishingCompanyController;
 import br.model.Collection;
 import br.model.PublishingCompany;
+import br.util.Util;
 
 @ManagedBean
 @ViewScoped
@@ -22,11 +23,28 @@ public class CollectionBean {
 		
 		PublishingCompanyController ctrl = new PublishingCompanyController();
 		this.listaCompany = ctrl.lista();
+		
+		if(Util.getSession().getAttribute("collection") != null){
+			
+			this.collection = ( (Collection)Util.getSession().getAttribute("collection") );
+			
+		}else{
+		
+			this.collection = new Collection();
+			
+		}
 	}
 	
-	public void inserir(){
+	public void salvar(){
 		CollectionController ctrl = new CollectionController(collection);
-		ctrl.insere();
+		
+		if(collection.getId() == 0){
+			ctrl.insere();
+		}else{
+			ctrl.atualiza();
+		}
+		
+		goListaCollection();
 	}
 
 	public Collection getCollection() {
@@ -50,6 +68,7 @@ public class CollectionBean {
 	}
 
 	public String goNewCollection(){
+		Util.getSession().setAttribute("collection", null);
 		return "cadastro-collection";
 	}
 
@@ -59,6 +78,21 @@ public class CollectionBean {
 
 	public void setListaCompany(List<PublishingCompany> listaCompany) {
 		this.listaCompany = listaCompany;
+	}
+	
+	public String goCadastroCollection(Collection collection){
+		//Caso venha algum collection por parâmetro, adiciona na sessão. Isso indica que é uma edição.
+		if(collection != null){
+			Util.getSession().setAttribute("collection", collection);
+		}
+		
+		return "cadastro-collection";
+
+	}
+	
+	public String goListaCollection(){
+		Util.getSession().setAttribute("collection", null);
+		return "lista-collection";
 	}
 
 }

@@ -32,7 +32,7 @@
 					<p:spinner value="#{collectionBean.collection.editions}" min="1" styleClass="form-control" /> <br /><br />
 					Tipo<br />
 					<p:selectOneMenu value="#{collectionBean.collection.type}">
-						<f:selectItem itemLabel="Teste" itemValue="teste"/>
+						<f:selectItem itemLabel="Teste" itemValue="1"/>
         			</p:selectOneMenu><br /><br />
 					Editora<br />
 					<p:selectOneMenu id="state" value="#{collectionBean.collection.publishingCompany}"  style="width:125px">
@@ -43,7 +43,7 @@
 					Tipo Acesso
 					<p:selectBooleanButton  value="#{collectionBean.collection.accessType}" onLabel="Privado" offLabel="Público" styleClass="form-control" /><br /><br />
 					
-					<p:commandButton value="Salvar" action="#{collectionBean.inserir}" styleClass="form-control btn btn-primary" />
+					<h:commandButton value="Salvar" action="#{collectionBean.salvar}" styleClass="form-control btn btn-primary" />
 				</h:form>
 				
 			</div>

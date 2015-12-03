@@ -79,7 +79,7 @@
 									<h:outputText value="#{collection.editions}"/>
 								</p:column>
 								<p:column>
-									<p:commandButton value="Editar" type="button"  />
+									<p:commandButton value="Editar" action="#{collectionBean.goCadastroCollection(collection)}"  />
 								</p:column>
 								<p:column>
 									<p:commandButton value="X" action="#{collectionBean.deletar(collection)}">

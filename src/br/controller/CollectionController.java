@@ -102,5 +102,38 @@ public class CollectionController extends BaseController {
 		setSqlParams(sqlParams);
 		executaDelete();
 	}
+	
+	public void atualiza(){
+		StringBuffer sql = new StringBuffer();
+		
+		sql.append("update collection ");
+		sql.append("   set name = ?,");
+		sql.append("       description = ?,");
+		sql.append("       picture = ?,");
+		sql.append("       editions = ?,");
+		sql.append("       type = ?,");
+		sql.append("       publishing_company = ?,");
+		sql.append("       status = ?,");
+		sql.append("       access_type = ?");
+		sql.append(" where id = ? ");
+		
+		setSql(sql.toString());
+		
+		Object[] sqlParams = {
+				collection.getName(),
+				collection.getDescription(),
+				collection.getPicture(),
+				collection.getEditions(),
+				collection.getType(),
+				collection.getPublishingCompany(),
+				collection.getStatus(),
+				collection.getAccessType(),
+				collection.getId()
+		};
+		
+		setSqlParams(sqlParams);
+		
+		executaUpdate();
+	}
 
 }
