@@ -2,8 +2,10 @@ package br.bean;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import br.controller.CollectionController;
 import br.controller.PublishingCompanyController;
@@ -44,7 +46,9 @@ public class CollectionBean {
 			ctrl.atualiza();
 		}
 		
-		goListaCollection();
+		FacesContext context = FacesContext.getCurrentInstance();
+        
+        context.addMessage(null, new FacesMessage("Sucesso",  "A coleção foi salva!") );
 	}
 
 	public Collection getCollection() {
@@ -62,9 +66,10 @@ public class CollectionBean {
 		return listaCollection;
 	}
 	
-	public void deletar(Collection collection){
+	public String deletar(Collection collection){
 		CollectionController ctrl = new CollectionController(collection);
 		ctrl.deleta();
+		return "lista-collection";
 	}
 
 	public String goNewCollection(){

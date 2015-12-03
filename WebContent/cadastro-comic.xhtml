@@ -11,7 +11,9 @@
 		<h:outputScript library="js" name="jquery.js" />
 	</h:head>
 	<h:body>
-	
+
+		<p:growl id="growl" showDetail="true" sticky="true" />
+
 		<div class="col-sm-4 col-md-4 col-lg-4 left blue">
 			<p class="page-title">COMIC</p>
 			<h:form styleClass="form-group bottom">
@@ -49,7 +51,7 @@
 					Grau
 					<p:inputText value="#{comicBean.comic.grade}" styleClass="form-control" /><br /><br />
 					
-					<p:commandButton value="Save" action="#{comicBean.salvar}" styleClass="form-control btn btn-primary" />
+					<p:commandButton value="Save" action="#{comicBean.salvar}" styleClass="form-control btn btn-primary" update="growl" />
 					
 				</h:form>
 				
