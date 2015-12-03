@@ -2,8 +2,10 @@ package br.bean;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import br.controller.PublishingCompanyController;
 import br.model.PublishingCompany;
@@ -71,12 +73,17 @@ public class PublishingCompanyBean {
 			ctrl.atualiza();
 		}
 		
-		goListaPublishingCompany();
+		FacesContext context = FacesContext.getCurrentInstance();
+        
+        context.addMessage(null, new FacesMessage("Sucesso",  "A editora foi salva!") );
+
 	}
 	
-	public void deletar(PublishingCompany publishingCompany){
+	public String deletar(PublishingCompany publishingCompany){
 		PublishingCompanyController ctrl = new PublishingCompanyController(publishingCompany);
 		ctrl.deleta();
+		
+		return "lista-company";
 	}
 
 }

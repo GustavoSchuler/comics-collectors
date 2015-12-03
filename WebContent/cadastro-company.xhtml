@@ -10,6 +10,8 @@
 	</h:head>
 	<h:body>
 		
+		<p:growl id="growl" showDetail="true" sticky="true" />  
+		
 		<div class="col-sm-4 col-md-4 col-lg-4 left blue">
 			<p class="page-title">EDITORA</p>
 			<h:form styleClass="form-group bottom">
@@ -28,7 +30,7 @@
 					<p:inputText value="#{publishingCompanyBean.publishingCompany.description}" styleClass="form-control" /> <br />
 					Imagem
 					<p:fileUpload value="#{publishingCompanyBean.publishingCompany.logo}" mode="simple" skinSimple="false" /><br />
-					<p:commandButton value="Salvar" action="#{publishingCompanyBean.salvar()}" styleClass="form-control btn btn-primary" />
+					<p:commandButton value="Salvar" action="#{publishingCompanyBean.salvar()}" styleClass="form-control btn btn-primary" update="growl"/>
 				</h:form>
 				
 			</div>
