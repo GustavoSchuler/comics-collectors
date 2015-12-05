@@ -64,7 +64,7 @@ public class ComicController extends BaseController {
 		sql.append("       state = ?,");
 		sql.append("       readed = ?,");
 		sql.append("       grade = ?");
-		sql.append(" where id = ?) ");
+		sql.append(" where id = ? ");
 		
 		setSql(sql.toString());
 		

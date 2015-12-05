@@ -47,12 +47,12 @@
 					<h:form id="form">
 			
 						<div class="table-responsive">
-							<p:dataTable value="#{indexBean.todasColecoes}" var="collections" id="collections" tableStyleClass="table table-striped">
+							<p:dataTable value="#{indexBean.listaColecoesPublicas}" var="collections" id="collections" tableStyleClass="table table-striped">
 								<p:column> 
 									<f:facet name="header">
 										COLEÇÕES PÚBLICAS
 									</f:facet>
-									<h:commandLink action="#{collectionBean.goListaComic(collection)}">
+									<h:commandLink action="#{collectionBean.goListaComic(collections)}">
 										<p:graphicImage value="resources/images/collection/#{collections.picture}" />
 										<h:outputText value="#{collections.name}"/>
 									</h:commandLink>
