@@ -103,7 +103,8 @@ public class ComicController extends BaseController {
 						rs.getDouble("price"),
 						rs.getInt("state"),
 						rs.getBoolean("readed"),
-						rs.getInt("grade")));
+						rs.getInt("grade"),
+						null));
 			}
 			
 			return list;
