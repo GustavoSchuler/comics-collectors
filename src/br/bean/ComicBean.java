@@ -13,6 +13,7 @@ import br.controller.StateController;
 import br.model.Collection;
 import br.model.Comic;
 import br.model.State;
+import br.util.MeuListener;
 import br.util.Util;
 
 @ManagedBean
@@ -55,6 +56,14 @@ public class ComicBean {
 	}
 	
 	public void salvar(){
+		
+		if(comic.getFilePicture() != null){
+			//salva imagem
+			String newFilePath = MeuListener.getCaminhoImagens();
+			String nomeImagem = Util.salvaImagem(comic.getFilePicture(), newFilePath);
+			comic.setPicture(nomeImagem);
+		}
+		
 		ComicController ctrl = new ComicController(comic);
 		
 		if(comic.getId() == 0){

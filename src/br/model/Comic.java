@@ -1,5 +1,7 @@
 package br.model;
 
+import org.primefaces.model.UploadedFile;
+
 public class Comic {
 	
 	private int id;
@@ -7,6 +9,7 @@ public class Comic {
 	private String title;
 	private int number;
 	private String picture;
+	private UploadedFile filePicture;
 	private double price;
 	private int state;
 	private Boolean readed;
@@ -15,7 +18,7 @@ public class Comic {
 	public Comic(){}
 	
 	public Comic(int id, int collection, String title, int number, String picture, double price, int state, Boolean readed,
-			int grade) {
+			int grade, UploadedFile filePicture) {
 		super();
 		this.id = id;
 		this.collection = collection;
@@ -26,6 +29,7 @@ public class Comic {
 		this.state = state;
 		this.readed = readed;
 		this.grade = grade;
+		this.filePicture = filePicture;
 	}
 	
 	public int getId() {
@@ -82,4 +86,13 @@ public class Comic {
 	public void setGrade(int grade) {
 		this.grade = grade;
 	}
+
+	public UploadedFile getFilePicture() {
+		return filePicture;
+	}
+
+	public void setFilePicture(UploadedFile filePicture) {
+		this.filePicture = filePicture;
+	}
+	
 }

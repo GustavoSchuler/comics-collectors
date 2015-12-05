@@ -6,11 +6,7 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpServletRequest;
 
 import br.controller.CollectionController;
 import br.controller.PublishingCompanyController;
@@ -53,11 +49,12 @@ public class CollectionBean {
 	
 	public void salvar() throws MalformedURLException{
 		
-		//salva imagem
-		String newFilePath = MeuListener.getCaminhoImagens() ;
-		
-		String nomeImagem = Util.salvaImagem(collection.getFilePicture(), newFilePath);
-		collection.setPicture(nomeImagem);
+		if(collection.getFilePicture() != null){
+			//salva imagem
+			String newFilePath = MeuListener.getCaminhoImagens() ;
+			String nomeImagem = Util.salvaImagem(collection.getFilePicture(), newFilePath);
+			collection.setPicture(nomeImagem);
+		}
 		
 		CollectionController ctrl = new CollectionController(collection);
 		

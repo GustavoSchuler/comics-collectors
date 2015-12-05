@@ -25,7 +25,7 @@
 			
 			<div class="row content">
 			
-				<h:form styleClass="form-group">
+				<h:form styleClass="form-group" enctype="multipart/form-data">
 			
 					Coleção<br />
 					<p:selectOneMenu id="collection" value="#{comicBean.comic.collection}"   styleClass="form-control">
@@ -36,7 +36,7 @@
 					Número
 					<p:spinner value="#{comicBean.comic.number}" styleClass="form-control" /> <br /> <br />
 					Imagem
-					<p:inputText value="#{comicBean.comic.picture}" styleClass="form-control" /><br />
+					<p:fileUpload value="#{comicBean.comic.filePicture}" mode="simple" skinSimple="false" /><br />
 					Preço
 					<p:spinner value="#{comicBean.comic.price}" styleClass="form-control" stepFactor="0.25" /> <br /><br />
 					Estado<br />
