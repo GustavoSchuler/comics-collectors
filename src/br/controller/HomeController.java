@@ -17,7 +17,7 @@ public class HomeController extends BaseController {
 		String sql = "select c.* " + 
 		             "  from users_collection uc, " +
 				     "       collection c " +
-				     " where uc.collection = c.collection ";
+				     " where uc.collection = c.id ";
 		
 		setSql(sql);
 		
