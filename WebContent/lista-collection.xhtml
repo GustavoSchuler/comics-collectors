@@ -27,7 +27,6 @@
 				       <p:submenu label="MENU">
 				       	   <p:menuitem value="Home" action="#{indexBean.goIndex}" update="messages" />
 				           <p:menuitem value="Coleções" action="#{indexBean.goCollection}" update="messages" />
-				           <p:menuitem value="Quadrinhos" action="#{indexBean.goComic}" update="messages"/>
 				           <p:menuitem value="Editoras" action="#{indexBean.goCompany}" update="messages"/>
 				       </p:submenu>
 				       <p:submenu label="CONFIGURAÇÃO">
@@ -50,36 +49,12 @@
 							<p:dataTable value="#{collectionBean.getListaCollectionUser()}" var="collection" id="collectionsGrid" tableStyleClass="table table-striped">
 								<p:column> 
 									<f:facet name="header">
-										<h:outputText value="Código" />
-									</f:facet>
-									<h:outputText value="#{collection.id}"/>
-								</p:column> 
-								<p:column> 
-									<f:facet name="header">
-										<h:outputText value="Nome" />
+										<p:graphicImage value="#{collection.picture}" />
 									</f:facet>
 									<h:commandLink action="#{collectionBean.goListaComic(collection)}">
 										<h:outputText value="#{collection.name}"/>
 									</h:commandLink>
-								</p:column>
-								<p:column> 
-									<f:facet name="header">
-										<h:outputText value="Descrição" />
-									</f:facet>
-									<h:outputText value="#{collection.description}"/>
-								</p:column>
-								<p:column> 
-									<f:facet name="header">
-										<h:outputText value="Imagem" />
-									</f:facet>
-									<h:outputText value="#{collection.picture}"/>
-								</p:column>
-								<p:column> 
-									<f:facet name="header">
-										<h:outputText value="Edições" />
-									</f:facet>
-									<h:outputText value="#{collection.editions}"/>
-								</p:column>
+								</p:column> 
 								<p:column>
 									<p:commandButton value="Editar" action="#{collectionBean.goCadastroCollection(collection)}"  />
 								</p:column>
