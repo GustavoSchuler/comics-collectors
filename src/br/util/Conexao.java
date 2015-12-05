@@ -12,7 +12,7 @@ public class Conexao {
 			
 			String url = "jdbc:postgresql://localhost:5432/comics";  
             String usuario = "postgres";  
-            String senha = "feevale";  
+            String senha = "admin";  
   
             Class.forName("org.postgresql.Driver"); 
   

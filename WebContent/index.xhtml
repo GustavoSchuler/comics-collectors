@@ -41,7 +41,29 @@
 			</div>
 			
 			<div class="col-sm-10 col-md-10 col-lg-10">
+				
+				<div class="content">
+				
+					<h:form id="form">
 			
+						<div class="table-responsive">
+							<p:dataTable value="#{homeBean.todasColecoes}" var="collections" id="collections" tableStyleClass="table table-striped">
+								<p:column> 
+									<f:facet name="header">
+										
+									</f:facet>
+									<h:commandLink action="#{collectionBean.goListaComic(collection)}">
+										<p:graphicImage value="resources/images/collection/#{collections.picture}" />
+										<h:outputText value="#{collections.name}"/>
+									</h:commandLink>
+								</p:column> 
+							</p:dataTable>
+						</div>
+						
+					 </h:form>
+			 	 
+			 	 </div>
+				
 			</div>
 			 
 		 </div>
