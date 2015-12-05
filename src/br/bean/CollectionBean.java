@@ -1,11 +1,14 @@
 package br.bean;
 
+import java.net.MalformedURLException;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.ServletRequest;
 
 import br.controller.CollectionController;
 import br.controller.PublishingCompanyController;
@@ -45,7 +48,16 @@ public class CollectionBean {
 		Util.getSession().setAttribute("selected-collection", null);
 	}
 	
-	public void salvar(){
+	public void salvar() throws MalformedURLException{
+		
+		//salva imagem
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		ExternalContext ex = context.getExternalContext();
+		String newFilePath = ((ServletRequest) ex.getRequest()).getServletContext().getRealPath("");
+		Util.salvaImagem(collection.getFilePicture(), newFilePath);
+		collection.setPicture(newFilePath+"/"+collection.getFilePicture().getFileName());
+		
 		CollectionController ctrl = new CollectionController(collection);
 		
 		if(collection.getId() == 0){
@@ -53,8 +65,6 @@ public class CollectionBean {
 		}else{
 			ctrl.atualiza();
 		}
-		
-		FacesContext context = FacesContext.getCurrentInstance();
         
         context.addMessage(null, new FacesMessage("Sucesso",  "A coleção foi salva!") );
 	}

@@ -1,5 +1,7 @@
 package br.model;
 
+import org.primefaces.model.UploadedFile;
+
 public class Collection {
 	
 	private int id;
@@ -7,6 +9,7 @@ public class Collection {
 	private String name;
 	private String description;
 	private String picture;
+	private UploadedFile filePicture;
 	private int editions;
 	private int type;
 	private int publishingCompany;
@@ -18,7 +21,7 @@ public class Collection {
 	}
 	
 	public Collection(int id, int iduser, String name, String description, String picture, int editions, int type,
-			int publishingCompany, Boolean status, Boolean accessType) {
+			int publishingCompany, Boolean status, Boolean accessType, UploadedFile filePicture) {
 		super();
 		this.id = id;
 		this.iduser = iduser;
@@ -30,6 +33,7 @@ public class Collection {
 		this.publishingCompany = publishingCompany;
 		this.status = status;
 		this.accessType = accessType;
+		this.filePicture = filePicture;
 	}
 
 	public int getId() {
@@ -110,5 +114,13 @@ public class Collection {
 
 	public void setAccessType(Boolean accessType) {
 		this.accessType = accessType;
+	}
+
+	public UploadedFile getFilePicture() {
+		return filePicture;
+	}
+
+	public void setFilePicture(UploadedFile filePicture) {
+		this.filePicture = filePicture;
 	}
 }

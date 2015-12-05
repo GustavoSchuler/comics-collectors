@@ -83,7 +83,8 @@ public class CollectionController extends BaseController {
 							rs.getInt("type"),
 							rs.getInt("publishing_company"),
 							rs.getBoolean("status"),
-							rs.getBoolean("access_type")));
+							rs.getBoolean("access_type"),
+							null));
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
