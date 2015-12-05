@@ -58,7 +58,9 @@
 									<f:facet name="header">
 										<h:outputText value="Nome" />
 									</f:facet>
-									<h:outputText value="#{collection.name}"/>
+									<h:commandLink action="#{collectionBean.goListaComic(collection)}">
+										<h:outputText value="#{collection.name}"/>
+									</h:commandLink>
 								</p:column>
 								<p:column> 
 									<f:facet name="header">

@@ -39,8 +39,10 @@ public class CollectionController extends BaseController {
 		
 		setSql(sql.toString());
 		
+		int idUser = ((User)Util.getSession().getAttribute("user")).getId();
+		
 		Object[] sqlParams = {
-				2, //collection.getIdUser(),
+				idUser,
 				collection.getName(),
 				collection.getDescription(),
 				collection.getPicture(),
@@ -135,5 +137,4 @@ public class CollectionController extends BaseController {
 		
 		executaUpdate();
 	}
-
 }

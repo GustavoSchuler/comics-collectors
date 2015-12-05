@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.model.Collection;
 import br.model.Comic;
 
 public class ComicController extends BaseController {
@@ -84,10 +85,10 @@ public class ComicController extends BaseController {
 		executaUpdate();
 	}
 	
-	public List<Comic> lista(){
+	public List<Comic> lista(Collection collection){
 		List<Comic> list = new ArrayList<Comic>();
 		
-		String sql = "select * from comic";
+		String sql = "select * from comic where collection = " + collection.getId();
 		setSql(sql);
 		ResultSet rs = list();
 		

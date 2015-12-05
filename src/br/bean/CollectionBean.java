@@ -9,8 +9,10 @@ import javax.faces.context.FacesContext;
 
 import br.controller.CollectionController;
 import br.controller.PublishingCompanyController;
+import br.controller.TypeController;
 import br.model.Collection;
 import br.model.PublishingCompany;
+import br.model.Type;
 import br.util.Util;
 
 @ManagedBean
@@ -19,12 +21,16 @@ public class CollectionBean {
 	
 	private Collection collection;
 	private List<PublishingCompany> listaCompany;
+	private List<Type> listaType;
 	
 	public CollectionBean(){
 		this.collection = new Collection();
 		
 		PublishingCompanyController ctrl = new PublishingCompanyController();
 		this.listaCompany = ctrl.lista();
+		
+		TypeController typeController = new TypeController();
+		this.listaType = typeController.lista();
 		
 		if(Util.getSession().getAttribute("collection") != null){
 			
@@ -35,6 +41,8 @@ public class CollectionBean {
 			this.collection = new Collection();
 			
 		}
+		
+		Util.getSession().setAttribute("selected-collection", null);
 	}
 	
 	public void salvar(){
@@ -98,6 +106,20 @@ public class CollectionBean {
 	public String goListaCollection(){
 		Util.getSession().setAttribute("collection", null);
 		return "lista-collection";
+	}
+	
+	public String goListaComic(Collection collection){
+		Util.getSession().setAttribute("selected-collection", collection);
+		return "lista-comic";
+		
+	}
+
+	public List<Type> getListaType() {
+		return listaType;
+	}
+
+	public void setListaType(List<Type> listaType) {
+		this.listaType = listaType;
 	}
 
 }

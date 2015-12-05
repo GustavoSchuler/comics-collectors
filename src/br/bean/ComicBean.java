@@ -22,6 +22,7 @@ public class ComicBean {
 	private Comic comic;
 	private List<Collection> collections;
 	private List<State> states;
+	private Collection selectedCollection;
 	
 	public ComicBean(){
 		
@@ -31,13 +32,16 @@ public class ComicBean {
 		StateController stateController = new StateController();
 		this.states = stateController.listar();
 		
+		this.selectedCollection = (Collection) Util.getSession().getAttribute("selected-collection");
+		
 		if(Util.getSession().getAttribute("comic") != null){
 			
 			this.comic = ( (Comic)Util.getSession().getAttribute("comic") );
 			
 		}else{
 		
-			this.comic = new Comic(0,0,"",0,"",0.0,0,null,0);
+			this.comic = new Comic();
+			this.comic.setCollection(this.selectedCollection.getId());
 			
 		}
 	}
@@ -74,7 +78,7 @@ public class ComicBean {
 	
 	public List<Comic> getListaComicsUser(){
 		ComicController ctrl = new ComicController();
-		List<Comic> listaComic = ctrl.lista(); 
+		List<Comic> listaComic = ctrl.lista(selectedCollection); 
 		
 		return listaComic;
 	}

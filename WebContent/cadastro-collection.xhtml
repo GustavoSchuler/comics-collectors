@@ -34,7 +34,7 @@
 					<p:spinner value="#{collectionBean.collection.editions}" min="1" styleClass="form-control" /> <br /><br />
 					Tipo<br />
 					<p:selectOneMenu value="#{collectionBean.collection.type}">
-						<f:selectItem itemLabel="Teste" itemValue="1"/>
+						<f:selectItems value="#{collectionBean.listaType}" var="types" itemLabel="#{types.name}" itemValue="#{types.id}" />
         			</p:selectOneMenu><br /><br />
 					Editora<br />
 					<p:selectOneMenu id="state" value="#{collectionBean.collection.publishingCompany}"  style="width:125px">

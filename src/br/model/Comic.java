@@ -12,6 +12,8 @@ public class Comic {
 	private Boolean readed;
 	private int grade;
 	
+	public Comic(){}
+	
 	public Comic(int id, int collection, String title, int number, String picture, double price, int state, Boolean readed,
 			int grade) {
 		super();
