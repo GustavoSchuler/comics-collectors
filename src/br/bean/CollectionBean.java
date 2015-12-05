@@ -8,7 +8,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 import br.controller.CollectionController;
 import br.controller.PublishingCompanyController;
@@ -16,6 +18,7 @@ import br.controller.TypeController;
 import br.model.Collection;
 import br.model.PublishingCompany;
 import br.model.Type;
+import br.util.MeuListener;
 import br.util.Util;
 
 @ManagedBean
@@ -51,12 +54,10 @@ public class CollectionBean {
 	public void salvar() throws MalformedURLException{
 		
 		//salva imagem
-		FacesContext context = FacesContext.getCurrentInstance();
+		String newFilePath = MeuListener.getCaminhoImagens() ;
 		
-		ExternalContext ex = context.getExternalContext();
-		String newFilePath = ((ServletRequest) ex.getRequest()).getServletContext().getRealPath("");
-		Util.salvaImagem(collection.getFilePicture(), newFilePath);
-		collection.setPicture(newFilePath+"/"+collection.getFilePicture().getFileName());
+		String nomeImagem = Util.salvaImagem(collection.getFilePicture(), newFilePath);
+		collection.setPicture(nomeImagem);
 		
 		CollectionController ctrl = new CollectionController(collection);
 		
@@ -65,6 +66,8 @@ public class CollectionBean {
 		}else{
 			ctrl.atualiza();
 		}
+		
+		FacesContext context = FacesContext.getCurrentInstance();
         
         context.addMessage(null, new FacesMessage("Sucesso",  "A coleção foi salva!") );
 	}

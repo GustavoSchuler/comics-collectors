@@ -32,22 +32,27 @@ public class Util {
 		response.sendRedirect( praOnde );
 	}
 	
-	public static void salvaImagem(UploadedFile file, String newFilePath){
+	public static String salvaImagem(UploadedFile file, String newFilePath){
+		
 		byte[] img = file.getContents();
-//		String newFilePath = getClass().getClassLoader().getResource("collection/resources/images/collection") + nome + uploadedFileName.substring( uploadedFileName.indexOf(".") , uploadedFileName.length());
 		
 		try{
+			
+			File newFile = File.createTempFile("img", file.getFileName().substring( file.getFileName().indexOf("."), file.getFileName().length()), new File(newFilePath));
 			String nome = newFilePath + "/" + file.getFileName();
-			File newfile = new File(nome);
-			newfile.createNewFile();
-			FileOutputStream fos = new FileOutputStream(newFilePath);
+			 
+			FileOutputStream fos = new FileOutputStream(newFile);			
+			
 			try {
+				System.out.println( "Salvando:  " + img.length + " bytes");
 			    fos.write(img);
+			    return newFile.getName();
 			}finally {
 			    fos.close();
 			}
 		}catch(Exception ex){
 			ex.printStackTrace();
+			return null;
 		}
 	}
 }

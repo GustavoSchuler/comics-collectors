@@ -16,6 +16,10 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
+	<listener>
+		<listener-class>br.util.MeuListener</listener-class>
+	</listener>
+	
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.jsf</url-pattern>
@@ -29,6 +33,11 @@
 	<context-param>
 	   <param-name>primefaces.THEME</param-name>
 	   <param-value>bootstrap</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>caminho</param-name>
+		<param-value></param-value>
 	</context-param>
 
 </web-app>
